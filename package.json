@@ -1,0 +1,31 @@
+{
+  "name": "tweetzhot",
+  "version": "1.0.0",
+  "description": "Screenshots of single tweets / replies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ropg/tweetzhot.git"
+  },
+  "keywords": [
+    "twitter",
+    "tweet",
+    "screenshot",
+    "cli"
+  ],
+  "bin": "./cli.js",
+  "author": "Rop Gonggrijp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ropg/tweetzhot/issues"
+  },
+  "homepage": "https://github.com/ropg/tweetzhot#readme",
+  "dependencies": {
+    "image-size": "^1.0.0",
+    "yargs": "^17.2.1",
+    "zhot": "^1.1.0"
+  }
+}
