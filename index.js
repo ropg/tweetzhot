@@ -35,6 +35,21 @@ async function async_tweetzhot(config) {
         'height': config.height ? config.height : 2400
     }
 
+    config.args = [
+        '--disable-web-security',
+        '--disable-features=IsolateOrigins',
+        ' --disable-site-isolation-trials'
+    ];
+
+    config.extraHTTPHeaders = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.0 Safari/537.36',
+        'upgrade-insecure-requests': '1',
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.9,application/signed-exchange;v=b3',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'en-US,en;q=0.9,en;q=0.8',
+        'Access-Control-Allow-Origin': '*'
+    };
+
     // This is what gets evaluated in the page context
     config.evaluate = (config) => {
         var r = {};
