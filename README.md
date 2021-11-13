@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/tweetzhot.svg)](https://badge.fury.io/js/tweetzhot)
+
 # tweetzhot
 
 **Screenshots of single tweets / replies**
@@ -186,7 +188,7 @@ or throws an error, in which case the error message may contain the error as per
 
 ### Installation Details
 
-**tweetzhot** depends on **[zhot](https://github.com/ropg/zhot)**, which in turn depends on **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, which in turn installs a Chromium binary that is know to work with it. But many recent versions of Chrome and (experimental support) Firefox will apparently work with it. But it will only do this for supported operating systems, and FreeBSD (which I use for my server) was not supported. If you run into problems with puppeteer during installation, you might want to try something like this:
+**tweetzhot** depends on **[zhot](https://github.com/ropg/zhot)**, which in turn depends on **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, which in turn installs a Chromium binary that is know to work with it. But many recent versions of Chrome and (experimental support) Firefox will apparently work with it. But it will only install Chromium for supported operating systems, and FreeBSD (which I use for my server) was not supported. If you run into problems with puppeteer during installation, you might want to try something like this:
 
 ```text
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
