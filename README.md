@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/tweetzhot.svg)](https://badge.fury.io/js/tweetzhot)
+[![npm version](https://badge.fury.io/js/tweetzhot.svg)](https://badge.fury.io/js/tweetzhot) [![license](https://badgen.net/github/license/ropg/tweetzhot)](https://github.com/ropg/tweetzhot/blob/main/LICENSE) [![github](https://img.shields.io/github/last-commit/ropg/tweetzhot)](https://github.com/ropg/tweetzhot)
 
 # tweetzhot
 
