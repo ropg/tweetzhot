@@ -169,7 +169,8 @@ $ node example.js
   "tweet": {
     "url": "https://twitter.com/LasseClimate/status/1458141422251503617",
     "user": "LasseClimate",
-    "id": "1458141422251503617"
+    "id": "1458141422251503617",
+    "language": "en"
   },
   "image": {
     "height": 804,

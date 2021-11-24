@@ -60,6 +60,7 @@ async function async_tweetzhot(config) {
             if (parseFloat(window.getComputedStyle(span).fontSize) > 20) {
                 const tweet = span.closest("article");
                 if (tweet) {
+                    tweet.classList.add('thisTweet');
                     delete r.error;
                     delete r.cancelScreenshot;
                     r.tweet = {};
@@ -73,7 +74,11 @@ async function async_tweetzhot(config) {
                         r.error = 'Could not parse response.';
                     }
 
-                    tweet.classList.add('thisTweet');
+                    const langdiv = tweet.querySelector('div[lang]');
+                    if (langdiv) {
+                        r.tweet.language = langdiv.getAttribute('lang');
+                    }
+
 
                     // Cut off replies, likes, etc if config.cutStats is set
                     if (config.cutStats) {
