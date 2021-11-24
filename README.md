@@ -213,4 +213,4 @@ Tweets have numbers. But Javascript uses double precision floating point for num
 
 ### Twitter usernames
 
-Tweets have a URL that has both a username and an ID. But the username part is actually ignored by twitter: the URL is rewritten to hold teh username of the actual user that posted the tweet with that number. This is also the username that is returned by tweetzhot, no matter whether you pass ID only, or a URL with the wrong username.
+Tweets have a URL that has both a username and an ID. But the username part is actually ignored by twitter: the URL is rewritten to hold the username of the actual user that posted the tweet with that number. This is also the username that is returned by tweetzhot, no matter whether you pass ID only, or a URL with the wrong username.
