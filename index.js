@@ -102,9 +102,9 @@ async function async_tweetzhot(config) {
         if (r.error) {
             // No tweet was found. Let's see if we can refine the error 
             // with something twitter said.
-            const errorSelector = 'div[data-testid="error-detail"] span span, article span>span>span>span';
+            const errorSelector = 'div[data-testid="error-detail"] span span, article';
             errorSpan = document.querySelector(errorSelector);
-            if (errorSpan) r.error = errorSpan.innerHTML;
+            if (errorSpan) r.error = errorSpan.textContent.replace(/Learn more$/,'');;
         }
         return r;
     };

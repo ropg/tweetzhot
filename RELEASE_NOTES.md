@@ -11,3 +11,7 @@
 ### 1.1.0
 
 - Extracts twitter-detected language code from tweet
+
+### 1.1.1
+
+- Detects more twitter error messages to avoid "unknown error"
