@@ -15,3 +15,7 @@
 ### 1.1.1
 
 - Detects more twitter error messages to avoid "unknown error"
+
+### 1.1.2
+
+- Scroll window up a bit so header of some reply tweets does not get mangled

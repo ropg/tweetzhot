@@ -55,10 +55,11 @@ async function async_tweetzhot(config) {
         var r = {};
         r.cancelScreenshot = true;
         r.error = 'An unknown error has ocurred';
-        for (const span of document.querySelectorAll('span')) {
-            // The tweet we want is an article tag in a > 20px fontSize span
-            if (parseFloat(window.getComputedStyle(span).fontSize) > 20) {
-                const tweet = span.closest("article");
+        window.scrollBy(0, -250);
+        for (const div of document.querySelectorAll('div')) {
+            // The tweet is the first article tag containing a > 20px fontSize div
+            if (parseFloat(window.getComputedStyle(div).fontSize) > 20) {
+                const tweet = div.closest("article");
                 if (tweet) {
                     tweet.classList.add('thisTweet');
                     delete r.error;
@@ -74,11 +75,11 @@ async function async_tweetzhot(config) {
                         r.error = 'Could not parse response.';
                     }
 
+                    // Parse the language
                     const langdiv = tweet.querySelector('div[lang]');
                     if (langdiv) {
                         r.tweet.language = langdiv.getAttribute('lang');
                     }
-
 
                     // Cut off replies, likes, etc if config.cutStats is set
                     if (config.cutStats) {
