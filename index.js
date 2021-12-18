@@ -56,49 +56,59 @@ async function async_tweetzhot(config) {
         r.cancelScreenshot = true;
         r.error = 'An unknown error has ocurred';
         window.scrollBy(0, -250);
+
+        r.tweet = {};
+        var url = document.location.href;
+        console.log(url)
+        try {
+            [ r.tweet.url, r.tweet.user, r.tweet.id ] = url.match(
+                /^https:\/\/twitter\.com\/([^\/]+)\/status\/(\d+)$/
+            );
+        } catch {
+            r.error = 'Could not parse response.';
+        }
+
+        let tweet;
         for (const div of document.querySelectorAll('div')) {
             // The tweet is the first article tag containing a > 20px fontSize div
             if (parseFloat(window.getComputedStyle(div).fontSize) > 20) {
-                const tweet = div.closest("article");
-                if (tweet) {
-                    tweet.classList.add('thisTweet');
-                    delete r.error;
-                    delete r.cancelScreenshot;
-                    r.tweet = {};
-                    var url = document.location.href;
-                    console.log(url)
-                    try {
-                        [ r.tweet.url, r.tweet.user, r.tweet.id ] = url.match(
-                            /^https:\/\/twitter\.com\/([^\/]+)\/status\/(\d+)$/
-                        );
-                    } catch {
-                        r.error = 'Could not parse response.';
-                    }
-
-                    // Parse the language
-                    const langdiv = tweet.querySelector('div[lang]');
-                    if (langdiv) {
-                        r.tweet.language = langdiv.getAttribute('lang');
-                    }
-
-                    // Cut off replies, likes, etc if config.cutStats is set
-                    if (config.cutStats) {
-                        const selector = '.thisTweet>div>div>div>div>div';
-                        for (const div of document.querySelectorAll(selector)) {
-                            if (parseFloat(window.getComputedStyle(div).marginBottom) > 10) {
-                                while (div.nextElementSibling) div.nextElementSibling.remove();
-                                break;
-                            }
-                        }
-                    }
-
-                    // Remove the 'more' (three dots) button
-                    const more = document.querySelector('.thisTweet div[aria-label=More]');
-                    if (more) more.remove();
-
+                tweet = div.closest("article");
+                break;
+            }
+        }
+        if (!tweet) {;
+            for (const span of document.querySelectorAll('span')) {
+                if (span.innerHTML == `@${r.tweet.user}`) {
+                    tweet = span.closest("article");
                     break;
                 }
             }
+        }
+        if (tweet) {
+            tweet.classList.add('thisTweet');
+            delete r.error;
+            delete r.cancelScreenshot;
+
+            // Parse the language
+            const langdiv = tweet.querySelector('div[lang]');
+            if (langdiv) {
+                r.tweet.language = langdiv.getAttribute('lang');
+            }
+
+            // Cut off replies, likes, etc if config.cutStats is set
+            if (config.cutStats) {
+                const selector = '.thisTweet>div>div>div>div>div';
+                for (const div of document.querySelectorAll(selector)) {
+                    if (parseFloat(window.getComputedStyle(div).marginBottom) > 10) {
+                        while (div.nextElementSibling) div.nextElementSibling.remove();
+                        break;
+                    }
+                }
+            }
+
+            // Remove the 'more' (three dots) button
+            const more = document.querySelector('.thisTweet div[aria-label=More]');
+            if (more) more.remove();
         }
         if (r.error) {
             // No tweet was found. Let's see if we can refine the error 

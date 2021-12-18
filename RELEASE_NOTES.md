@@ -19,3 +19,7 @@
 ### 1.1.2
 
 - Scroll window up a bit so header of some reply tweets does not get mangled
+
+### 1.1.3
+
+- Add fallback to span with username in it if no 25px fonts because tweet contains no text only images
