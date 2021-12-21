@@ -73,14 +73,14 @@ async function async_tweetzhot(config) {
             // The tweet is the first article tag containing a > 20px fontSize div
             if (parseFloat(window.getComputedStyle(div).fontSize) > 20) {
                 tweet = div.closest("article");
-                break;
+                if (tweet) break;
             }
         }
-        if (!tweet) {;
+        if (!tweet) {
             for (const span of document.querySelectorAll('span')) {
                 if (span.innerHTML == `@${r.tweet.user}`) {
                     tweet = span.closest("article");
-                    break;
+                    if (tweet) break;
                 }
             }
         }

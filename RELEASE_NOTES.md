@@ -23,3 +23,7 @@
 ### 1.1.3
 
 - Add fallback to span with username in it if no 25px fonts because tweet contains no text only images
+
+### 1.1.4
+
+- Was shooting wrong tweet in thread sometimes. Now keeps looking if found div is outside of article tag, seems to have fixed that.
